@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "12c00f68-4085-4996-8031-735225184253",
+		"name": "PetStore_json_user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50445293",
+		"_collection_link": "https://lamiabintezaman-6301926.postman.co/workspace/Demo~8b2cc21c-70a4-4eb6-91a7-28638e701556/collection/50445293-12c00f68-4085-4996-8031-735225184253?action=share&source=collection_link&creator=50445293"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 10,\r\n  \"username\": \"Tisi\",\r\n  \"firstName\": \"Tisiya\",\r\n  \"lastName\": \"Zaman\",\r\n  \"email\": \"tisi@mailcom\",\r\n  \"password\": \"12345\",\r\n  \"phone\": \"019241635275\",\r\n  \"userStatus\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/Tisi",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"Tisi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create list of user using input array",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 102,\r\n        \"username\": \"tia2\",\r\n        \"firstName\": \"tiana2\",\r\n        \"lastName\": \"zaman2\",\r\n        \"email\": \"tiana2@gmail.com\",\r\n        \"password\": \"1234\",\r\n        \"phone\": \"102837475\",\r\n        \"userStatus\": 1\r\n    },\r\n    {\r\n        \"id\": 103,\r\n        \"username\": \"tia3\",\r\n        \"firstName\": \"tiana3\",\r\n        \"lastName\": \"zaman3\",\r\n        \"email\": \"tiana3@gmail.com\",\r\n        \"password\": \"1235\",\r\n        \"phone\": \"1028374756\",\r\n        \"userStatus\": 1\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/createWithList",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"createWithList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create list of user with random value",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generate dynamic user ID\r",
+							"let randomId = Math.floor(Math.random() * 10000);\r",
+							"\r",
+							"// Generate random username\r",
+							"let randomUsername = \"user_\" + Math.floor(Math.random() * 10000);\r",
+							"\r",
+							"// Save them as Postman variables\r",
+							"pm.variables.set(\"user_id\", randomId);\r",
+							"pm.variables.set(\"user_name\", randomUsername);\r",
+							"\r",
+							"// Log for debugging\r",
+							"console.log(\"Generated ID:\", randomId);\r",
+							"console.log(\"Generated Username:\", randomUsername);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": \"{{user_id}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"firstName\": \"tiana2\",\r\n        \"lastName\": \"zaman2\",\r\n        \"email\": \"tiana2@gmail.com\",\r\n        \"password\": \"1234\",\r\n        \"phone\": \"102837475\",\r\n        \"userStatus\": 1\r\n    },\r\n    {\r\n        \"id\": 103,\r\n        \"username\": \"tia3\",\r\n        \"firstName\": \"tiana3\",\r\n        \"lastName\": \"zaman3\",\r\n        \"email\": \"tiana3@gmail.com\",\r\n        \"password\": \"1235\",\r\n        \"phone\": \"1028374756\",\r\n        \"userStatus\": 1\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/createWithList",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"createWithList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updated user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"id\": 102,\r\n    \"username\": \"tia2\",\r\n    \"firstName\": \"tian2\",\r\n    \"lastName\": \"zaman2\",\r\n    \"email\": \"tian2@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"phone\": \"102837475\",\r\n    \"userStatus\": 0\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/tia2",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"tia2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loig in",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/login?username=tia&password=1234",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "tia"
+						},
+						{
+							"key": "password",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
