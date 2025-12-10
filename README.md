@@ -10,18 +10,54 @@ Tasks includes
    
 <h1><u>Instructions</u></h1>
 
-1: Import the Collection
-   - Open Postman
-   - Click Import
-   - Choose the file: PetStore_User_Collection.json
+ 1. Import the Collection
 
- 2: Import the Environment
-    - Go to Environments
-    - Click Import
-    - Select the file: PetStore_Environment.json
+Follow the steps below to load the API test collection:
 
-3: Pre-Request Scripts Used
-    - Generate random user IDs
-    - Auto-update usernames
-    - Pass variables between requests
+Open Postman
+
+Click Import
+
+Select the file:
+PetStore_User_Collection.json
+
+ 2. Import the Environment
+
+Set up the environment so variables work correctly:
+
+Go to Environments in Postman
+
+Click Import
+
+Select the file:
+PetStore_Environment.json
+
+ 3. Pre-Request Scripts Used
+
+This project uses several automation scripts to enhance testing:
+
+Generate random user IDs
+
+Auto-update usernames
+
+Auto-generate email & phone values
+
+Pass variables between requests
+
+Set environment variables automatically
+
+ 4. Tests Included
+
+Each request contains Postman test scripts to validate:
+
+Status codes (200, 400, 404, etc.)
+
+Response structure
+
+Response body value checks
+
+Field validations
+
+Positive & negative test cases
+
   
