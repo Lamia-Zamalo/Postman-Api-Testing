@@ -21,7 +21,6 @@ Tasks includes
     - Select the file: PetStore_Environment.json
 
 3: Pre-Request Scripts Used
-    - Some requests include pre-request scripts to:
     - Generate random user IDs
     - Auto-update usernames
     - Pass variables between requests
